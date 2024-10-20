@@ -1,0 +1,50 @@
+name: TGForwarder
+
+# 触发条件
+on:
+  # 定时触发，每小时的第 1 分钟触发
+  schedule:
+    - cron: '1 * * * *'
+  # 允许手动触发工作流
+  workflow_dispatch:
+
+push:
+  paths-ignore:
+    - '**' # 忽略所有文件变更，即当有文件变更时不会触发这个工作流
+
+jobs:
+  run_demo_actions:
+    runs-on: ubuntu-latest
+    steps:
+      # 检出代码步骤
+      - name: Checkout code
+        uses: actions/checkout@v4
+        # 设置访问仓库的令牌
+        with:
+          token: ghp_your_token
+      # 设置 Python 环境步骤
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        # 指定 Python 版本
+        with:
+          python-version: '3.10.10'
+      # 安装 requirements.txt 中指定的依赖步骤
+      - name: Install requirements.txt
+        run: |
+          pip install -r./requirements.txt
+      # 运行 TGForwarder.py 文件步骤
+      - name: Run TGForwarder.py
+        run: python TGForwarder.py
+      # 提交并推送 history.json 文件步骤
+      - name: Commit and push history.json2 file
+        run: |
+          # 设置提交用户名为 github-actions[bot]
+          git config user.name "github-actions[bot]"
+          # 设置提交用户邮箱为 41898282+github-actions[bot]@users.noreply.github.com
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # 将 history.json 文件添加到暂存区
+          git add history.json
+          # 提交暂存区的修改，提交信息为"Update history.json file"，如果没有修改可忽略错误并输出提示信息
+          git commit -m "Update history.json file" || echo "No changes to commit"
+          # 推送修改到远程仓库
+          git push
