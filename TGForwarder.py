@@ -337,7 +337,7 @@ class TGForwarder:
 if __name__ == '__main__':
     channels_to_monitor = ['DSJ1314', 'guaguale115', 'hao115', 'shareAliyun', 'alyp_JLP', 'Quark_Share_Channel']
     groups_to_monitor = []
-    forward_to_channel = 'wpzyhj'
+    forward_to_channel = 'wjjxqx'
     # 监控最近消息数
     limit = 30
     # 监控消息中评论数，有些视频、资源链接被放到评论中
@@ -353,9 +353,9 @@ if __name__ == '__main__':
     # 当频道禁止转发时，是否下载图片发送消息
     fdown = True
     download_folder = 'downloads'
-    api_id = your_id
-    api_hash = 'your_hash'
-    string_session = 'your_session'
+    api_id = 20017392
+    api_hash = '116acb9fe95f1ea94b5af71d583aed3c'
+    string_session = '1BVtsOHsBu1GKzpS7h2uNKkbhGijLLgC-YKIAxoLeGaS33E8FfVOaOROwZ-rfvQ9fruCF2r0rGBuxKkc4tFfGTmvZn8lcb1zuVjcKRGFxwyudaWWsZQpddBtEcBozHo2596tPqJIAShqNpX6wiRFz8aHQMJJhtentomJ6OUZ1-CAKKYSBkcSn6oiTGXc9e193UlOnmBryxbXk4vzLOt2rRgWmcr9-bYMebRXol_tY0h_Jdk2Mf09zmxNTGACVyLNod_fc_7DnHDIwuwyZkdrd2f1KVWjZ9qDf4j_XQ3N3-IjI4iyUWjWtm0oNInmRKwuUWm5D6qqYEBI0lEJeEdIJSFq9vVZODE8='
     # 默认不开启代理
     proxy = None
     # 检测自己频道最近 500 条消息是否已经包含该资源
