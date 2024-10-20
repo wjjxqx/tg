@@ -38,7 +38,7 @@ jobs:
         user: __token__
         password: ${{ secrets.PYPI_API_TOKEN }}
 
-name: TGForwarder
+name: TGForwarder.py
 
 # 触发条件
 on:
